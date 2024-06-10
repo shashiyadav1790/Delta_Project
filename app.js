@@ -53,7 +53,7 @@ store.on("error",()=>{
 });
 
 const sessionOptions = {
-    store: store,
+    store,
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
@@ -63,11 +63,16 @@ const sessionOptions = {
         httpOnly: true,
     }
 }
-
-
 app.use(session(sessionOptions));
 app.use(flash());
-
+app.use(session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create( {
+        mongoUrl: dbUrl,
+        touchAfter: 24 * 3600 
+     }) }));
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
