@@ -63,8 +63,6 @@ const sessionOptions = {
         httpOnly: true,
     }
 }
-app.use(session(sessionOptions));
-app.use(flash());
 app.use(session({
     secret: process.env.SECRET,
     resave: false,
@@ -73,6 +71,8 @@ app.use(session({
         mongoUrl: dbUrl,
         touchAfter: 24 * 3600 
      }) }));
+     
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
