@@ -20,7 +20,7 @@ const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 const { error } = require("console");
 
-const dbUrl = process.env.ATLASDB_URl;
+const dbUrl = "mongodb+srv://delta-project:yhJGrZVxuADlbE6M@cluster0.yg49uxb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 
 main().then(()=>{
@@ -41,9 +41,9 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname,"/public")));
 
 const store = MongoStore.create({
-    mongoUrl: dbUrl,
+    mongoUrl: "mongodb+srv://delta-project:yhJGrZVxuADlbE6M@cluster0.yg49uxb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
     crypto: {
-        secret:  process.env.SECRET,
+        secret:  "loveYouPapaMummy",
     },
     touchAfter: 24*3600,
 });
@@ -54,7 +54,7 @@ store.on("error",()=>{
 
 const sessionOptions = {
     store,
-    secret: process.env.SECRET,
+    secret: "loveYouPapaMummy",
     resave: false,
     saveUninitialized: true,
     cookie: {
