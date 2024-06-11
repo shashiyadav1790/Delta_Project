@@ -63,15 +63,7 @@ const sessionOptions = {
         httpOnly: true,
     }
 }
-app.use(session({
-    secret: process.env.SECRET,
-    resave: false,
-    saveUninitialized: false,
-    store: MongoStore.create( {
-        mongoUrl: dbUrl,
-        touchAfter: 24 * 3600 
-     }) }));
-     
+app.use(session(sessionOptions));
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
