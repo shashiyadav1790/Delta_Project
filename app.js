@@ -4,13 +4,15 @@ if(process.env.NODE_ENV != "production"){
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const port = 8080;
+const port = 3000;
 const methodOverride = require("method-override");
 const path = require("path");
 const ejsMate = require("ejs-mate");
 const listingsRouter = require("./routes/listing.js");
 const reviewsRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
+const categoryRouter = require("./routes/category.js");
+// const locationRouter = require("./routes/location.js");
 const session = require("express-session");
 const MongoStore = require('connect-mongo');
 const flash = require("connect-flash");
@@ -19,6 +21,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 const { error } = require("console");
+const Listings = require("./models/listing.js");
 
 const dbUrl = "mongodb+srv://delta-project:yhJGrZVxuADlbE6M@cluster0.yg49uxb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
@@ -81,6 +84,21 @@ app.use((req,res,next)=>{
 app.use("/listings",listingsRouter)
 app.use("/listings/:id/reviews",reviewsRouter);
 app.use("/",userRouter);
+app.use("/listings/category",categoryRouter);
+// app.use("/listings/location",locationRouter);
+
+
+
+
+
+
+
+// app.post("/listings/search",(async(req,res)=>{
+//     let listings = req.body.location;
+//     let allListings = await Listings.filter((el)=>el.location == listings);
+//     res.render("./views/listing/index.ejs",{allListings});
+// }))
+
 
 app.all("*",(req,res,next)=>{
   next(new expressErrror(404,"page not found"));

@@ -7,13 +7,13 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link" href="/listings">Explore</a>
+          <a class="nav-link" href="/listings"><b>Explore</b></a>
         </div>
         <div class="navbar-nav ms-auto">
           <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
-              <form class="d-flex" role="search">
-                <input class="form-control me-2 search-inp" type="search" placeholder="Search distinations" >
+              <form class="d-flex" role="search" action="/listings/search"  method="post">
+                <input class="form-control me-2 search-inp" type="search" placeholder="Search locations" name="location">
                   <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
               </form>
             </div>

@@ -37,9 +37,26 @@
         <label for="location" class="form-label">Location</label>
         <input name="listing[location]" type="text" placeholder="Hazaribagh" class="form-control" required>
         <div class="invalid-feedback"> Locations Should be valid</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="category" class="form-label">Choose a category</label>
+          <select id="category" name="listing[category]" class="form-select" aria-label="Default select example" required>
+            <option selected>Open this select menu</option>
+            <option value="room" >room</option>
+            <option value="mountains" >mountains</option>
+            <option value="trending" >trending</option>
+            <option value="iconi" >Iconi</option>
+            <option value="castles" >Castles</option>
+            <option value="pools" >Pools</option>
+            <option value="farms" >Farms</option>
+            <option value="camping" >Campping</option>
+            <option value="arctic" >Arctic</option>
+            <option value="domes" >Domes</option>
+
+          </select>
+          <div class="invalid-feedback">Any category should be valid</div>
     </div>
-        
-        
         <button class="btn btn-dark mb-3 add-btn">Submit</button>
     </form>    
   </div>
